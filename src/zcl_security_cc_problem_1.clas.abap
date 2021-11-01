@@ -16,6 +16,7 @@ CLASS zcl_security_cc_problem_1 DEFINITION
     "Remember we are simulating the input here, this normally would come from UI or Service Interface
     CONSTANTS: seatsMax TYPE string VALUE `142', PRICE = '1`.
 
+    CONSTANTS: price TYPE string VALUE PRICE = '1`.
 
 ENDCLASS.
 
@@ -32,7 +33,7 @@ CLASS zcl_security_cc_problem_1 IMPLEMENTATION.
             INTO TABLE @DATA(flights).
     out->write( flights ).
 
-    DATA(dynamicUpdate) = |SEATS_MAX = '{ seatsMax }'|.
+    DATA(dynamicUpdate) = |SEATS_MAX = '{ seatsMax }' PRICE = '{ price }'|.
     UPDATE /dmo/flight
          SET (dynamicUpdate)
        WHERE carrier_id = @carrierId
